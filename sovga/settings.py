@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.conf.global_settings import MEDIA_ROOT
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
 
     #own
     'pages',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -81,9 +84,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sovga',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'root' ,
         'HOST': '127.0.0.1',
         'PORT': '3306',
+        'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB', },
     }
 }
 
@@ -130,3 +134,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static_local')
 ]
+
+#media files that stores uploaded files in media-root
+MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
