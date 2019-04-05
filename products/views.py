@@ -24,3 +24,7 @@ def product_detail(request, id, slug):
         'product': product
     }
     return render(request, 'product-detail.html', context)
+
+
+def newfunc(request):
+    return request
