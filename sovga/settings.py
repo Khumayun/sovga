@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pages',
     'products',
     'contact',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,5 @@ STATICFILES_DIRS = [
 #media files that stores uploaded files in media-root
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
