@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from pages.views import home_view, about_view, product_view, product_detail_view, shopping_cart_view
 from contact.views import contacts_view
+from django.views.generic.base import TemplateView
 urlpatterns = [
     path('', home_view, name='home'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')),
     path('contacts/', contacts_view),
     path('about/', about_view),
     path('product/', product_view),
@@ -29,7 +31,7 @@ urlpatterns = [
 ]
 
 
-from django.conf.urls import url
+# from django.conf.urls import url
 #from . import views
 #
 # #app_name = 'shop'
