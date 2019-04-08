@@ -17,38 +17,56 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="active-menu">
-								<a href="{% url 'home'%}">Home</a>
-								{% comment %} <ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
-								</ul> {% endcomment %}
+								<a href="{% url 'home' %}">Home</a>
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="{% url 'product' %}">Shop</a>
 							</li>
 
+							{% comment %}
 							<li class="label1" data-label1="hot">
 								<a href="shoping-cart.html">Features</a>
 							</li>
-
 							<li>
 								<a href="blog.html">Blog</a>
 							</li>
+							{% endcomment %}
+
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="{% url 'about' %}">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="{% url 'contact' %}">Contact</a>
 							</li>
 						</ul>
 					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m h-full">
+						<div class="flex-c-m h-full p-r-24">
+							<div>
+								<ul class="main-menu">
+									<li class="active-menu">										
+										{% if user.is_authenticated %}
+										  <a href="{% url 'home' %}">{{ user.username }}</a>
+										{% else %}
+										  <p>Hello, <a href="{% url 'login' %}">Sign in.</a></p>
+										{% endif %}
+										<ul class="sub-menu">								
+										{% if user.is_authenticated %}
+											<li><a href="index.html"><a href="{% url 'logout' %}">logout</a></li>
+										{% endif %}
+											<li><a href="home-02.html">My orders</a></li>
+											<li><a href="home-03.html">Wish List</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+							
 						<div class="flex-c-m h-full p-r-24">
 							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
 								<i class="zmdi zmdi-search"></i>
