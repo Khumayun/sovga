@@ -1,13 +1,35 @@
 <!-- templates/signup.html -->
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock %}
-
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+  <div class="row register-form">
+        <div class="col-md-8 col-md-offset-2 ">
+        
+            <form class="form-horizontal custom-form" method= 'POST'>
+            <h1>Registration</h1>
+             {% csrf_token %}
+              {% for non_field_error in form.non_field_errors  %}
+                <p class='red_text'>{{non_field_error}}</p>
+              {% endfor %}
+              {% for field in form %}
+               <div class="form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="control-label  m-b-20 how-pos4-parent" for="{{field.id_for_label}}">{{field.html_name}} </label>
+                    </div>
+                    <div class="col-sm-6 input-column form-control-sm">
+                        {{field}}
+                        {% for error in field.errors %}
+                          <p class='red_text'>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                    </div>
+               {% endfor %}              
+                <button type='submit' class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+				        Sign up
+				    </button>
+            </form>
+        </div>
+    </div>
+  
+  
 {% endblock %}

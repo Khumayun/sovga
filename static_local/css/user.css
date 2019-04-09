@@ -44,6 +44,7 @@
   border:1px solid #dbdbdb;
   border-radius:2px;
   height:42px;
+  width:80%;
 }
 
 .register-form .custom-form .dropdown .dropdown-toggle{
@@ -168,3 +169,6 @@
 }
 
 
+.red_text{
+  color:red
+}

@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static # new
+from django.conf import settings # new
 from pages.views import home_view, about_view, product_view, product_detail_view, shopping_cart_view
 from contact.views import contacts_view
 from django.views.generic.base import TemplateView
@@ -29,6 +31,8 @@ urlpatterns = [
     path('cart/', shopping_cart_view),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+if settings.DEBUG: # new
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # from django.conf.urls import url
