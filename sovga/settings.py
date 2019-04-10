@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'products',
     'contact',
     'accounts',
+    'multiupload',
 ]
 
 MIDDLEWARE = [

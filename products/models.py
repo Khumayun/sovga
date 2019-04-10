@@ -18,7 +18,6 @@ class Category(models.Model):
     # def get_absolute_url(self):
     #     return reverse('shop:product_list_by_category', args=[self.slug])
 
-
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, default='')
     name = models.CharField(max_length=100, db_index=True, blank=True)
@@ -43,6 +42,22 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class Product_gallery(models.Model):
+    class Meta:
+        verbose_name_plural = 'Galleries'
+    title = models.CharField('Title', max_length=20)
+
+    def __str__(self):
+        return self.title
+
+
+class Product_image(models.Model):
+    file = models.FileField('File', upload_to='photos/%Y/%m/%d/')
+    gallery = models.ForeignKey('Product_gallery', related_name='images', blank=True, null=True, on_delete=True)
+
+    def __str__(self):
+        return self.filename
 
     # def get_absolute_url(self):
     #     return reverse('shop:product_detail', args=[self.id, self.slug])
