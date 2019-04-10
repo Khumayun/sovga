@@ -10,29 +10,15 @@
 					</h4>
 
 					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
+{% comment %} 					
+					ERROR COULDNT get because of view does not render js.html {% endcomment %}
+						{% for cat in categories %}
+							<li class="p-b-10">
+								<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+									{{cat.name}}
+								</a>
+							</li>
+					    {% endfor %}
 					</ul>
 				</div>
 
