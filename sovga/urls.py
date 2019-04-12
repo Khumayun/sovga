@@ -30,6 +30,8 @@ urlpatterns = [
     path('contacts/', contacts_view, name='contacts'),
     path('about/', about_view, name='about'),
     path('products/', product_list_view, name='products'),
+    path('products/<slug:category_slug>/', product_list_view),
+
     path('product-detail/', product_detail_view),
     path('cart/', shopping_cart_view, name='cart'),
     path('accounts/', include('django.contrib.auth.urls')),
