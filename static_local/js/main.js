@@ -268,9 +268,11 @@
     
     /*==================================================================
     [ Show modal1 ]*/
+
     $('.js-show-modal1').on('click',function(e){
+        var modal = '.' + $(this).attr("id");
         e.preventDefault();
-        $('.js-modal1').addClass('show-modal1');
+        $(modal).addClass('show-modal1');
     });
 
     $('.js-hide-modal1').on('click',function(){
