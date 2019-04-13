@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+Sovg'a | Login
+{% endblock%}
 {% block  content %}
  
     <div class="login-card"><img src="{% static 'images/icons/avatar1.png' %}" class="profile-img-card">
@@ -23,9 +26,9 @@
 				    </button>
 			    </div>          
         </form>
-        <a href="registr.html" class="">Do not you  remember your password?</a>
+        <a href="{% url 'password_reset' %}" class="">Do not you  remember your password?</a>
         <br>
         
-        <a href="registr.html" class="">Have not registered yet ?</a></div>
+        <a href="{% url 'signup' %}" class="">Have not registered yet ?</a></div>
 
 {% endblock  %}

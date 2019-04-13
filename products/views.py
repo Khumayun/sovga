@@ -1,3 +1,4 @@
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 
@@ -6,13 +7,18 @@ def product_list_view(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
+    paginator = Paginator(products,8) # Show 16 products per page
+
+    page = request.GET.get('page')
+    paged_products = paginator.get_page(page)
+
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
 
     context = {
         'categories': categories,
-        'products': products
+        'products': paged_products
     }
     return render(request, 'product.html', context)
 
