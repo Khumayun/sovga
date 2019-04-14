@@ -22,6 +22,8 @@ from products.views import product_list_view, product_detail_view
 from contact.views import contacts_view
 from django.views.generic.base import TemplateView
 
+from django.urls import reverse
+
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -30,12 +32,13 @@ urlpatterns = [
     path('contacts/', contacts_view, name='contacts'),
     path('about/', about_view, name='about'),
     path('products/', product_list_view, name='products'),
-    path('products/<slug:category_slug>/', product_list_view),
+    path('products/<slug:category_slug>/', product_list_view, name='prod_category'),
 
     path('product-detail/', product_detail_view),
     path('cart/', shopping_cart_view, name='cart'),
     path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 # from django.conf.urls import url
 #from . import views
