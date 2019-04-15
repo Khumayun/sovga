@@ -5,13 +5,15 @@ from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
-def product_list_view(request, category_slug=None):
+def product_list_view(request, category_slug=None, sortby=''):
+
+    sortby = request.GET.get('sortby', 'name')
     category = None
     categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
+    products = Product.objects.filter(available=True).order_by(sortby)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = Product.objects.filter(category=category)
+        products = Product.objects.filter(category=category).order_by(sortby)
 
     paginator = Paginator(products,8) # Show 16 products per page
 
