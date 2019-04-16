@@ -16,11 +16,21 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+						
+							<li {% if 'home' in request.path %} 
+									class="active-menu"
+								{% else%}
+									class=''
+								{% endif %}
+								>
 								<a href="{% url 'home' %}">Home</a>
 							</li>
 
-							<li>
+							<li {% if 'products' in request.path %} 
+									class="active-menu"
+								{% else%}
+									class=''
+								{% endif %}>
 								<a href="{% url 'products' %}">Shop</a>
 							</li>
 
@@ -34,11 +44,21 @@
 							{% endcomment %}
 
 
-							<li>
+							<li
+							 {% if 'about' in request.path %} 
+									class="active-menu"
+								{% else%}
+									class=''
+								{% endif %}>
 								<a href="{% url 'about' %}">About</a>
 							</li>
 
-							<li>
+							<li
+							 {% if 'contacts' in request.path %} 
+									class="active-menu"
+								{% else%}
+									class=''
+								{% endif %}>
 								<a href="{% url 'contacts' %}">Contact</a>
 							</li>
 						</ul>
@@ -51,7 +71,7 @@
 								<ul class="main-menu">
 									<li class="active-menu">										
 										{% if user.is_authenticated %}
-										  <a href="{% url 'home' %}">{{ user.username }}</a>
+										  <a href="{% url 'home' %}">User: {{ user.username }}</a>
 										{% else %}
 										  <p>Hello, <a href="{% url 'login' %}">Sign in.</a></p>
 										{% endif %}

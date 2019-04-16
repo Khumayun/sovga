@@ -27,8 +27,8 @@ def product_list_view(request, category_slug=None, sortby=''):
     return render(request, 'product.html', context)
 
 
-def product_detail_view(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+def product_detail_view(request, id):
+    product = get_object_or_404(Product, id=id, available=True)
     context = {
         'product': product
     }

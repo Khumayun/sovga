@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path,  include
 from pages.views import home_view, about_view, shopping_cart_view
 from products.views import product_list_view, product_detail_view
 from contact.views import contacts_view
@@ -33,8 +33,8 @@ urlpatterns = [
     path('about/', about_view, name='about'),
     path('products/', product_list_view, name='products'),
     path('products/<slug:category_slug>/', product_list_view, name='prod_category'),
-
-    path('product-detail/', product_detail_view),
+    path('product-detail/<int:id>', product_detail_view, name='product_detail' ),
+    # path('product-detail/', product_detail_view, name='product_detail'),
     path('cart/', shopping_cart_view, name='cart'),
     path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
