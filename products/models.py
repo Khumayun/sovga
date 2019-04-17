@@ -1,6 +1,18 @@
 from django.db import models
 from django.urls import reverse
+    
+class Holiday(models.Model):
+    name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
+class Tag(models.Model):
+    name = models.CharField(max_length=150, db_index=True)
+
+    def __str__(self):
+        return self.name
+    
 class Category(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     slug = models.SlugField(max_length=150, unique=True, db_index=True)
@@ -13,13 +25,15 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
     def __str__(self):
-        return self.name        
+        return self.name
 
     def get_absolute_url(self):
         return reverse('prod_category', kwargs={"category_slug": self.slug })
 
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, default='')
+    holiday = models.ForeignKey(Holiday, related_name='products', on_delete=models.CASCADE, default='')
+    tag = models.ForeignKey(Tag, related_name='products', on_delete=models.CASCADE, default='')
     name = models.CharField(max_length=100, db_index=True, blank=True)
     slug = models.SlugField(max_length=100, db_index=True, blank=True)
     description = models.TextField(blank=True)

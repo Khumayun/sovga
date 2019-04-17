@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Product
+from .models import Category, Product, Tag, Holiday
 
 from django.shortcuts import get_object_or_404
 from products.models import Product_gallery, Product_image
@@ -56,7 +56,15 @@ class ProductAdmin(admin.ModelAdmin, GalleryMultiuploadMixing):
     list_editable = ['price', 'stock', 'available']
     prepopulated_fields = {'slug': ('name',)}
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+class HolidayAdmin(admin.ModelAdmin):
+    list_display = ['name']
+        
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Product_gallery, GalleryAdmin)
 admin.site.register(Product_image, ImageAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Holiday, HolidayAdmin)
