@@ -10,18 +10,31 @@ def product_list_view(request, category_slug=None):
     sortby = request.GET.get('sortby', 'name')
     priceRange_low = request.GET.get('price_range_l', '0')
     priceRange_up = request.GET.get('price_range_u', '100000000000000')
-    event = request.GET.get('event')
+    event = request.GET.get('event', '')
+    tag = request.GET.get('tag', '')
 
     category = None
     categories = Category.objects.all()
     tags = Tag.objects.all()
     holidays = Holiday.objects.all()
 
-    products = Product.objects.filter(
-        available=True,
-        price__gte = priceRange_low,
-        price__lte = priceRange_up
-    )
+    if priceRange_low != '':
+        products = Product.objects.filter(
+            price__gte = priceRange_low
+        )
+    if priceRange_up != '':
+        products = Product.objects.filter(
+            price__lte = priceRange_up
+        )
+    if event != '':
+        products = Product.objects.filter(
+            holiday__exact = holidays.get(name__exact = event)
+        )
+    if tag != '':
+        products = Product.objects.filter(
+            tag__exact = tags.get(name__exact = tag)
+        )
+
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
