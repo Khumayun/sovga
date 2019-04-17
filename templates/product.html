@@ -94,113 +94,22 @@ Sovg'a | Products
 									<div class="mtext-102 cl2 p-b-15">
 										Price
 									</div>
+									<div class="p-t-33">
+			                                <div class="flex-w flex-r-m p-b-10">
+			                                        <div class="size-204 respon6-next">
+			                                        <div class="rs1-select2 bor8 bg0">
+			                                            	<select name='price' class="js-select2">
+															<option selected= 'true' value=''>All</option>
+															{% for key, value in price_choices.items %}
+																<option  value='{{ key }}'>{{ value }}</option>
+															{% endfor %}
+															</select>
+			                                            <div class="dropDownSelect2"></div>
+			                                        </div>
+			                                    </div>
+			                                </div>
 
-									<ul>
-										<li class="p-b-6">
-											<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-												All
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<a href="#" class="filter-link stext-106 trans-04">
-												$0.00 - $50.00
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<a href="#" class="filter-link stext-106 trans-04">
-												$50.00 - $100.00
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<a href="#" class="filter-link stext-106 trans-04">
-												$100.00 - $150.00
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<a href="#" class="filter-link stext-106 trans-04">
-												$150.00 - $200.00
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<a href="#" class="filter-link stext-106 trans-04">
-												$200.00+
-											</a>
-										</li>
-									</ul>
-								</div>
-
-								<div class="filter-col3 p-r-15 p-b-27">
-									<div class="mtext-102 cl2 p-b-15">
-										Color
-									</div>
-
-									<ul>
-										<li class="p-b-6">
-											<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-												<i class="zmdi zmdi-circle"></i>
-											</span>
-
-											<a href="#" class="filter-link stext-106 trans-04">
-												Black
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-												<i class="zmdi zmdi-circle"></i>
-											</span>
-
-											<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-												Blue
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-												<i class="zmdi zmdi-circle"></i>
-											</span>
-
-											<a href="#" class="filter-link stext-106 trans-04">
-												Grey
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-												<i class="zmdi zmdi-circle"></i>
-											</span>
-
-											<a href="#" class="filter-link stext-106 trans-04">
-												Green
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-												<i class="zmdi zmdi-circle"></i>
-											</span>
-
-											<a href="#" class="filter-link stext-106 trans-04">
-												Red
-											</a>
-										</li>
-
-										<li class="p-b-6">
-											<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-												<i class="zmdi zmdi-circle-o"></i>
-											</span>
-
-											<a href="#" class="filter-link stext-106 trans-04">
-												White
-											</a>
-										</li>
-									</ul>
-								</div>
+									
 
 								<div class="filter-col4 p-b-27">
 									<div class="mtext-102 cl2 p-b-15">
@@ -250,7 +159,7 @@ Sovg'a | Products
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-							{% comment %} not products/12 !!!!!! {% endcomment %}
+							
 								<a href="{% url 'product_detail' prod.id %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									{{ prod.name }}
 								</a>
