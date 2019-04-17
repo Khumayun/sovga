@@ -3,6 +3,8 @@ from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=150, db_index=True)
+    description=models.CharField(max_length=300, blank=True)
+    image = models.ImageField(upload_to='category_image/%Y/%m/%d', blank=True)
     slug = models.SlugField(max_length=150, unique=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
